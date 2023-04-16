@@ -1,15 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import {useRecoilValue} from 'recoil';
+  import {NoteAtom} from './Data'
 
-function Home() {
 
-  return (
-    <>
-    <h1 style = {{backgroundColor: "green" }}> Welcome to Home page </h1>
-    <Link to = "/about">About</Link> <br/>
-    <Link to = "/contact">Contact Us</Link> <br/>
-    </>
-  )
+
+const Home=()=>{
+
+    const notes = useRecoilValue(NoteAtom)
+
+
+return (
+
+    <div>
+
+    {
+        notes.map((note,index)=>{
+return (
+
+    <div key={index}>
+    <h1>{note.id}</h1>
+    <h1>{note.title}</h1>
+    <h1>{note.author}</h1>
+    <h1>{note.disc}</h1>
+    </div>
+
+
+
+
+)
+
+        })
+    }
+
+
+    </div>
+
+)
+
+
 }
 
 export default Home
